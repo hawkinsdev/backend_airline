@@ -1,0 +1,16 @@
+fastapi
+email-validator
+pydantic[email]
+uvicorn
+sqlalchemy
+python-dotenv
+sqlalchemy-utils
+flake8
+pyjwt
+postgres
+passlib[bcrypt]
+python-multipart
+pandas
+openpyxl
+xlrd>=2.0.1
+pymysql
