@@ -21,7 +21,7 @@ class SQLAlchemyRepository(IRepository[T]):
         self.session.close()
 
     def get_by_id(self, id: int) -> Model:
-        row = self.session.query(self.model).filter(and_(self.model.id == id, self.model.active == 1)).first()
+        row = self.session.query(self.model).filter(and_(self.model.id == id)).first()
         return row
 
     def get_one(self, filters: T) -> Model:
@@ -33,7 +33,7 @@ class SQLAlchemyRepository(IRepository[T]):
             Model: El último registro que coincida con los filtros.
         """
         filter_options = filters.model_dump(exclude_none=True)
-        query = self.session.query(self.model).filter(self.model.active == 1)
+        query = self.session.query(self.model)
 
         for field, value in filter_options.items():
             attr = getattr(self.model, field, None)
@@ -44,7 +44,7 @@ class SQLAlchemyRepository(IRepository[T]):
         return row
 
     def get_all(self, page: int = None, page_size: int = None, order: dict = None) -> tuple[List[Model], dict]:
-        query = self.session.query(self.model).filter(self.model.active == 1)
+        query = self.session.query(self.model)
 
         if order:
             field = order.get('field', None)
@@ -74,7 +74,7 @@ class SQLAlchemyRepository(IRepository[T]):
         if not filters:
             return self.get_all(page, page_size, order)
 
-        query = self.session.query(self.model).filter(and_(*filters, self.model.active == 1))
+        query = self.session.query(self.model).filter(and_(*filters))
 
         if order:
             field = order.get('field', None)
@@ -113,7 +113,6 @@ class SQLAlchemyRepository(IRepository[T]):
         if row is None:
             return None
 
-        setattr(row, 'active', 0)
         setattr(row, 'updated_at', sql.func.now())
 
         self.refresh_db(row)
