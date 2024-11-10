@@ -15,7 +15,7 @@ class AirportService(ModelResponse, AirportRepository):
             }
             return self.success(response)
         except ValueError as e:
-            print(f'error to get airports {e}')
+            print(f'value error to get airports {e}')
             raise e
         except Exception as e:
             print(f'error to get airports {e}')
