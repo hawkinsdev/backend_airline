@@ -51,8 +51,8 @@ class Database:
         host = os.getenv('SERVER_DB')
         db_name = os.getenv('NAME_DB')
 
-        string_conexion = f"mysql+pymysql://{user}:{password}@{host}:3306/{db_name}"
-        # string_conexion = f"postgresql+psycopg2://{user}:{password}@{host}/{db_name}"
+        # string_conexion = f"mysql+pymysql://{user}:{password}@{host}:3306/{db_name}"
+        string_conexion = f"postgresql+psycopg2://{user}:{password}@{host}/{db_name}"
         return string_conexion
 
     def get_session(self):
