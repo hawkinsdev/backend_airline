@@ -18,6 +18,9 @@ Una biblioteca para trabajar con JSON Web Tokens (JWT) para autenticación.
 ## passlib[bcrypt]:
 Para la gestión de contraseñas, incluyendo el hashing seguro utilizando bcrypt.
 
+## supabase:
+gestiona la base de datos con Postgres
+
 ## Run Locally
 Los archivos [main.py, runtime.txt, vercel.json] son de configuración para desplegar la aplicación en VERCEL. Si desea desplegar la aplicación en cualquier otro servicio puede modificar las actions en la carpeta .github/workflows/template-deploy.txt sino usar la configuración que esta presente en la plantilla.
 
@@ -82,3 +85,8 @@ Correr linter flake8
 ```bash
   flake8 .
 ```
+
+## Swagger
+ir a la dirección /docs para visitar la vista de openai y verificar los endpoints disponibles y su documentación para uso exclusivo del backend.
+
+# NOTA: no se incluyeron los servicios de authorization con jwt ya que no es necesario para este caso.
