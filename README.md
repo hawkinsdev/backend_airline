@@ -62,9 +62,14 @@ Ejecutar los seeds para crear los registros iniciales para las tablas de la base
   python initialize_data.py
 ```
 
-Start the server
+Start the server mode development 
 ```bash
   fastapi dev init.py
+```
+
+Start the server mode production 
+```bash
+  fastapi run init.py
 ```
 
 ## Testing
